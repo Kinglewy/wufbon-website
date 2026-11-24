@@ -465,3 +465,64 @@ body.nature .section.dark .eyebrow { color: #8fd3a8; }
 body.nature .section.tint { background: var(--green-soft); }
 body.nature .section.dark { background: linear-gradient(160deg, var(--forest), var(--green-deep)); }
 body.nature .feature h3 { color: var(--green-deep); }
+
+/* ---------- 404 page ---------- */
+.nf { --nf-hill1: #2a3a8f; --nf-hill2: #24614a; --nf-hill3: #1c4a38; --nf-tree: #2f7d4f; --nf-tree2: #3f9a63;
+  position: relative; overflow: hidden; color: #e3e5f6; min-height: min(760px, 92vh); display: grid; align-items: start;
+  background: radial-gradient(120% 80% at 70% 10%, #3b3fa8 0%, #23277a 45%, #171a55 100%); }
+.nf-scene { position: absolute; inset: 0; pointer-events: none; }
+.nf-sun { position: absolute; top: 9%; right: 12%; width: clamp(90px, 14vw, 170px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, #ffd08a 0%, #f6a623 45%, rgba(241, 90, 36, 0) 72%); animation: nf-sun 6s ease-in-out infinite alternate; }
+@keyframes nf-sun { from { transform: translateY(6px) scale(1); opacity: .85; } to { transform: translateY(-6px) scale(1.08); opacity: 1; } }
+.nf-leaves { position: absolute; inset: 0; width: 100%; height: 100%; }
+.nf-land { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 58%; }
+.nf-layer { transition: transform .4s ease-out; }
+.nf-tree { animation: nf-sway var(--sway-d, 5s) ease-in-out infinite alternate; transform-box: view-box; }
+@keyframes nf-sway { from { transform: rotate(-2.5deg); } to { transform: rotate(2.5deg); } }
+.nf-river { fill: none; stroke: #29abe2; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 60 26; opacity: .85; animation: nf-flow 3s linear infinite; }
+.nf-river2 { stroke: #8fd8f5; stroke-width: 2.5; stroke-dasharray: 30 40; opacity: .7; animation-duration: 2.2s; }
+@keyframes nf-flow { to { stroke-dashoffset: -172; } }
+
+.nf-inner { position: relative; z-index: 2; padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(9rem, 24vw, 15rem); display: grid; justify-items: center; text-align: center; gap: 1rem; }
+.nf-eyebrow { color: #8fd8f5; animation: rise .7s .1s both; }
+.nf-code { display: flex; align-items: center; justify-content: center; gap: clamp(4px, 1.5vw, 16px); font-size: clamp(6rem, 22vw, 13rem); line-height: .9; color: #fff; margin: 0; letter-spacing: -0.03em; }
+.nf-digit { display: inline-block; text-shadow: 0 10px 40px rgba(10, 12, 50, .5); animation: nf-drop .9s cubic-bezier(.2,1.4,.4,1) both, nf-float 4s ease-in-out infinite alternate; animation-delay: calc(var(--d) * .12s + .2s), calc(var(--d) * .4s + 1.2s); }
+@keyframes nf-drop { from { transform: translateY(-120%) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes nf-float { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+.nf-zero { width: .82em; height: .82em; flex: none; animation: pop .8s .35s cubic-bezier(.2,1.4,.4,1) both; }
+.nf-ring { fill: #fff; stroke: #29abe2; stroke-width: 5; }
+.nf-net { transform-origin: 60px 60px; animation: nf-spin 14s linear infinite; }
+@keyframes nf-spin { to { transform: rotate(360deg); } }
+.nf-line { fill: none; stroke: #e31e24; stroke-width: 4; stroke-dasharray: 240; stroke-dashoffset: 240; animation: nf-draw 1.4s .7s ease forwards; }
+@keyframes nf-draw { to { stroke-dashoffset: 0; } }
+.nf-node { fill: #fff; stroke: #e31e24; stroke-width: 5; transform-box: fill-box; transform-origin: center; animation: nf-node 2.4s ease-in-out infinite; animation-delay: calc(var(--n) * .6s + 1.2s); }
+@keyframes nf-node { 0%, 70%, 100% { transform: scale(1); fill: #fff; } 35% { transform: scale(1.35); fill: #ffd3c2; } }
+.nf-title { color: #fff; font-size: clamp(1.6rem, 4vw, 2.6rem); animation: rise .7s .55s both; }
+.nf-lead { max-width: 56ch; color: #c9cdeb; font-size: 1.1rem; animation: rise .7s .7s both; }
+.nf-cta { justify-content: center; animation: rise .7s .85s both; }
+
+/* "Climb the table" staircase with a hopping climber */
+.nf-climb { position: relative; width: 150px; height: 70px; margin: .4rem 0; animation: rise .7s .8s both; }
+.nf-step { position: absolute; bottom: 0; width: 50px; background: #f15a24; border-radius: 4px 4px 0 0; }
+.nf-step.s1 { left: 0; height: 18px; } .nf-step.s2 { left: 50px; height: 34px; background: #f6a623; } .nf-step.s3 { left: 100px; height: 50px; background: #2f7d4f; }
+.nf-climber { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #29abe2; box-shadow: 0 0 0 3px #fff; left: 17px; bottom: 18px; animation: nf-climb 3.6s cubic-bezier(.45,0,.55,1) infinite; }
+@keyframes nf-climb {
+  0% { left: 17px; bottom: 18px; } 12% { left: 42px; bottom: 52px; } 22% { left: 67px; bottom: 34px; }
+  34% { left: 92px; bottom: 68px; } 44% { left: 117px; bottom: 50px; } 70% { left: 117px; bottom: 50px; transform: scale(1.15); }
+  80% { left: 117px; bottom: 50px; transform: scale(1); opacity: 1; } 90% { opacity: 0; left: 17px; bottom: 18px; } 100% { opacity: 1; left: 17px; bottom: 18px; } }
+.nf-climb em { position: absolute; right: -6px; top: -4px; transform: translateX(100%); font-style: normal; font-family: var(--display); color: #ffc9a8; font-size: .95rem; white-space: nowrap; }
+@media (max-width: 480px) { .nf-climb em { position: static; transform: none; display: block; margin-top: 76px; } .nf-climb { margin-bottom: 1.6rem; } }
+
+.nf-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.nf-link { display: grid; gap: .25rem; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 1.1rem 1.2rem; text-decoration: none; color: var(--ink); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; animation: rise .6s both; animation-delay: calc(var(--i) * 70ms + 1s); }
+.nf-link strong { color: var(--leaf); font-family: var(--display); font-size: 1.08rem; }
+.nf-link span { color: var(--muted); font-size: .9rem; }
+.nf-link:hover { transform: translateY(-4px); border-color: var(--mint); box-shadow: 0 12px 26px rgba(31,35,112,.12); color: var(--ink); }
+@media (max-width: 900px) { .nf-links { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .nf-links { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .nf *, .nf-link { animation: none !important; } .nf-line { stroke-dashoffset: 0; } }
+.btn-ghost { background: transparent; }
+.nf { min-height: min(780px, calc(100svh - 76px)); }
+.nf-inner { padding-block: clamp(2rem, 4vw, 3rem) clamp(7rem, 14vw, 10rem); gap: .85rem; }
+.nf-land { height: 50%; }
+@media (max-width: 560px) { .nf-sun { top: 3%; right: 4%; width: 64px; } }
